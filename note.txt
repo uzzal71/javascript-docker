@@ -30,3 +30,9 @@ docker exec -it node-app bash
 
 Connection with local to host machine:
 docker run -v $(pwd):/app -p 3000:3000 -d --name node-app node-app-image
+
+docker ps -a
+docker logs node-app
+
+Delete local node_modules file:
+docker run -v $(pwd):/app -v /app/node_modules -p 3000:3000 -d --name node-app node-app-image
