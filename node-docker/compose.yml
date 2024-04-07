@@ -13,3 +13,8 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=uzzal71
       - MONGO_INITDB_ROOT_PASSWORD=uzzal@123
+    volumes:
+      - mongo-db:/data/db
+
+volumes:
+  mongo-db:
