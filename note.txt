@@ -1,0 +1,29 @@
+------------ Dockerfile ------------------------------------
+FROM node:latest
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["node", "index.js"]
+----------------------------------------------------------------
+Image Build:
+docker build -t node-app-image .
+
+Image List:
+docker image ls 
+
+Image Delete:
+docker image rm db354b7d29f5
+
+Image Run In Container:
+docker run -p 3000:3000 -d --name node-app node-app-image
+
+Container List:
+docker ps
+
+Container Delete:
+docker rm node-app -f
+
+Inside Container:
+docker exec -it node-app bash
