@@ -4,16 +4,12 @@ services:
     container_name: node-app
     build: .
     ports:
-      - "3000:3000"
+      - "3001:3001"
     environment:
-      - NODE_ENV=development
       - PORT=3000
 
-  mongo-db:
-    container_name: mongo-db
+  mongo:
     image: mongo
-    ports:
-      - "27017:27017"
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=uzzal71,
-      - MONGO_INITDB_ROOT_PASSWORD=uzzal@123,
+      - MONGO_INITDB_ROOT_USERNAME=uzzal71
+      - MONGO_INITDB_ROOT_PASSWORD=uzzal@123
