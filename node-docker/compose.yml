@@ -8,3 +8,12 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=3000
+
+  mongo-db:
+    container_name: mongo-db
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=uzzal71,
+      - MONGO_INITDB_ROOT_PASSWORD=uzzal@123,
