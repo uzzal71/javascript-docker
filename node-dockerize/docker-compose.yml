@@ -2,16 +2,7 @@ version: "1.0.0"
 services:
   node-app:
     container_name: node-app
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     image: node-app-image:latest
-    volumes:
-      - ./:/app
-      - /app/node_modules
     ports:
       - "3000:3000"
-    environment:
-      - APP_ENV=development
-      - PORT=3000
-    command: npm run dev
