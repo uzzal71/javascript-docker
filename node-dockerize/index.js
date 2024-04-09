@@ -10,12 +10,7 @@ app.get("/", (req, res) => {
     status: 200,
     message: "nodejs app is running..",
     data: {
-      sliders: {
-        title: "Title",
-        description: "Description",
-        image: "image",
-        url: "url",
-      },
+      sliders: {},
     },
   });
 });
