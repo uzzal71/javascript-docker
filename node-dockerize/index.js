@@ -10,7 +10,13 @@ app.get("/", (req, res) => {
     status: 200,
     message: "nodejs app is running..",
     data: {
-      sliders: {},
+      sliders: {
+        title: "Sliders",
+        description: "Sliders description",
+        image:
+          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      },
     },
   });
 });

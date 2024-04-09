@@ -51,7 +51,7 @@ docker run -v $(pwd):/app:ro -v /app/node_modules --env-file ./.env -p 3000:4000
 
 Check volume:
 docker volume ls
-docker volume prune
+
 or
 docker rm node-app -fv
 
