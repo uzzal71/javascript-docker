@@ -13,4 +13,11 @@ services:
     environment:
       - APP_ENV=development
       - PORT=3000
+      - MONGO_USER=uzzal71
+      - MONGO_PASSWORD=uzzal123
+      - MONGO_PORT=27017
     command: npm run dev
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=uzzal71
+      - MONGO_INITDB_ROOT_PASSWORD=uzzal123

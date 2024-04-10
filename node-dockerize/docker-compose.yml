@@ -6,6 +6,11 @@ services:
     image: node-app-image:latest
     ports:
       - "3000:3000"
+    environment:
+      - PORT=3000
+    depends_on:
+      - mongo
+
   mongo:
     container_name: mongo-db-dev
     image: mongo:latest

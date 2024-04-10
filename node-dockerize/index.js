@@ -1,15 +1,18 @@
 import bodyParser from "body-parser";
 import express from "express";
 import mongoose from "mongoose";
+import config from "./config/config.js";
+const { MONGO_IP, MONGO_PORT, MONGO_USER, MONGO_PASSWORD } = config;
 
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const mongoUrl = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
 mongoose
-  .connect("mongodb://uzzal71:uzzal123@mongo:27017/?authSource=admin")
-  .then(() => console.log("successfully connected to DB"))
-  .catch((e) => console.log(e));
+  .connect(mongoUrl)
+  .then(() => console.log("Successfully connected to DB"))
+  .catch((error) => console.log("Connection error:", error));
 
 app.get("/", (req, res) => {
   res.status(200).send({
