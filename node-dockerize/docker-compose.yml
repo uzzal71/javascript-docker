@@ -6,3 +6,14 @@ services:
     image: node-app-image:latest
     ports:
       - "3000:3000"
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    entrypoint:
+      - MONGO_INITDB_ROOT_USERNAME: uzzal71
+      - MONGO_INITDB_ROOT_PASSWORD: uzzal123
+    volumes:
+      - mongo-db:/data/db
+
+volumes:
+  mongo-db:
