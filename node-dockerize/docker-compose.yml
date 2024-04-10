@@ -8,7 +8,7 @@ services:
       - "3000:3000"
   mongo:
     container_name: mongo-db-dev
-    image: mongo
+    image: mongo:latest
     environment:
       - MONGO_INITDB_ROOT_USERNAME=uzzal71
       - MONGO_INITDB_ROOT_PASSWORD=uzzal123
