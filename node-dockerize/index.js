@@ -2,6 +2,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import mongoose from "mongoose";
 import config from "./config/config.js";
+import postRouter from "./routes/postRoutes.js";
 const { MONGO_IP, MONGO_PORT, MONGO_USER, MONGO_PASSWORD } = config;
 
 const app = express();
@@ -29,6 +30,8 @@ app.get("/", (req, res) => {
     data: {},
   });
 });
+
+app.use("/posts", postRouter);
 
 app.listen(port, (req, res) => {
   console.log("Server is running on port " + port);
