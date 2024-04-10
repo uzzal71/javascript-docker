@@ -20,5 +20,11 @@ services:
     volumes:
       - mongo-db:/data/db
 
+  # Redis Server
+  redis:
+    container_name: redis-db-dev
+    image: redis:latest
+    command: redis-server --requirepass beeda@202303
+
 volumes:
   mongo-db:

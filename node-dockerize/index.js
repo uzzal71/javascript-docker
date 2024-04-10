@@ -1,10 +1,35 @@
 import bodyParser from "body-parser";
+import RedisStore from "connect-redis";
 import express from "express";
+import session from "express-session";
+import Redis from "ioredis";
 import mongoose from "mongoose";
 import config from "./config/config.js";
 import postRouter from "./routes/postRoutes.js";
 import userRouter from "./routes/userRoutes.js";
-const { MONGO_IP, MONGO_PORT, MONGO_USER, MONGO_PASSWORD } = config;
+
+const {
+  MONGO_IP,
+  MONGO_PORT,
+  MONGO_USER,
+  MONGO_PASSWORD,
+  REDIS_URL,
+  REDIS_PORT,
+  SESSION_SECRET,
+  REDIS_HOST,
+  REDIS_PASSWORD,
+} = config;
+
+const redisClient = new Redis({
+  host: REDIS_HOST,
+  port: REDIS_PORT,
+  password: REDIS_PASSWORD,
+});
+
+// Initialize store.
+let redisStore = new RedisStore({
+  client: redisClient,
+});
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,6 +48,16 @@ const connectWithRetry = () => {
 };
 
 connectWithRetry();
+
+// Initialize session storage.
+app.use(
+  session({
+    store: redisStore,
+    resave: false,
+    saveUninitialized: false,
+    secret: SESSION_SECRET,
+  })
+);
 
 app.get("/", (req, res) => {
   res.status(200).send({
