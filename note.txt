@@ -68,3 +68,11 @@ docker compose -f compose.yml -f compose-dev.yml down -v
 
 docker compose -f compose.yml -f compose-prod.yml up -d --build
 docker compose -f compose.yml -f compose-prod.yml down -v
+
+docker network ls
+docker logs node-app-dev -f
+
+apt-get update -y
+apt-get install -y iputils-ping
+
+ping mongo
