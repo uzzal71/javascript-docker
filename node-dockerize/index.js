@@ -7,7 +7,6 @@ import userRouter from "./routes/userRoutes.js";
 const { MONGO_IP, MONGO_PORT, MONGO_USER, MONGO_PASSWORD } = config;
 
 const app = express();
-const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -39,6 +38,7 @@ app.use("/api/v1/posts", postRouter);
 // localhost:3000/api/v1/users
 app.use("/api/v1/users", userRouter);
 
+const port = process.env.PORT || 3000;
 app.listen(port, (req, res) => {
   console.log("Server is running on port " + port);
 });

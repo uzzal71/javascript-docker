@@ -1,16 +1,15 @@
 import User from "../models/userModel.js";
 
-export const singUp = async (user) => {
+export const signUp = async (req, res, next) => {
   try {
     const newUser = await User.create(req.body);
-    resizeBy.status(201).json({
+    res.status(201).json({
       status: "success",
       data: { user: newUser },
     });
   } catch (error) {
-    resizeBy.status(400).json({
+    res.status(400).json({
       status: "fail",
-      error: error.message,
     });
   }
 };
