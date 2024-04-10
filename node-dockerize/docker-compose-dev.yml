@@ -3,9 +3,7 @@ services:
   nginx:
     ports:
       - "3000:80"
-
   node-app:
-    container_name: node-app-dev
     build:
       context: .
       args:

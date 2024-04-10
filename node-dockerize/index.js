@@ -1,4 +1,5 @@
 import bodyParser from "body-parser";
+import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
 import config from "./config/config.js";
@@ -10,6 +11,7 @@ const { MONGO_IP, MONGO_PORT, MONGO_USER, MONGO_PASSWORD } = config;
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 const mongoUrl = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
 
@@ -25,12 +27,15 @@ const connectWithRetry = () => {
 
 connectWithRetry();
 
+app.enable("trust proxy");
+
 app.get("/api/v1", (req, res) => {
   res.status(200).send({
-    status: 200,
+    status: "success",
     message: "nodejs app is running..",
     data: {},
   });
+  console.log("yaah it run");
 });
 
 // localhost:3000/api/v1/posts

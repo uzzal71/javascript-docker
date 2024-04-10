@@ -76,3 +76,6 @@ apt-get update -y
 apt-get install -y iputils-ping
 
 ping mongo
+
+
+docker compose -f docker-compose.yml -f docker-compose-dev.yml up -d --scale node-app=2
