@@ -1,11 +1,13 @@
 version: "1.0.0"
 services:
+  nginx:
+    container_name: nginx-server
+    image: nginx:stable-alpine
+
   node-app:
     container_name: node-app
     build: .
     image: node-app-image:latest
-    ports:
-      - "3000:3000"
     environment:
       - PORT=3000
     depends_on:

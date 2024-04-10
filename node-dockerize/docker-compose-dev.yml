@@ -1,10 +1,13 @@
 version: "1.0.0"
 services:
+  nginx:
+    ports:
+      - "3000:80"
+
   node-app:
     container_name: node-app-dev
     build:
       context: .
-      dockerfile: Dockerfile
       args:
         APP_ENV: development
     volumes:
@@ -14,10 +17,10 @@ services:
       - APP_ENV=development
       - MONGO_USER=uzzal71
       - MONGO_PASSWORD=uzzal123
-      - MONGO_PORT=27017
       - SESSION_SECRET=secret
 
     command: npm run dev
+
   mongo:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=uzzal71
