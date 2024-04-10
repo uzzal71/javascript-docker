@@ -7,7 +7,7 @@ export const getAllPosts = async (req, res, next) => {
     res.status(200).json({
       status: "success",
       results: posts.length,
-      data: posts,
+      data: { posts },
     });
   } catch (err) {
     res.status(400).json({
@@ -23,7 +23,7 @@ export const getOnePost = async (req, res, next) => {
 
     res.status(200).json({
       status: "success",
-      data: post,
+      data: { post },
     });
   } catch (err) {
     res.status(400).json({
@@ -40,7 +40,7 @@ export const createPost = async (req, res, next) => {
     res.status(201).json({
       // Use 201 status code for successful creation
       status: "success",
-      data: post,
+      data: { post },
     });
   } catch (err) {
     res.status(400).json({
@@ -59,7 +59,7 @@ export const updatePost = async (req, res, next) => {
 
     res.status(200).json({
       status: "success",
-      data: post,
+      data: { post },
     });
   } catch (err) {
     res.status(400).json({
