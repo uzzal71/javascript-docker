@@ -9,10 +9,18 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const mongoUrl = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
-mongoose
-  .connect(mongoUrl)
-  .then(() => console.log("Successfully connected to DB"))
-  .catch((error) => console.log("Connection error:", error));
+
+const connectWithRetry = () => {
+  mongoose
+    .connect(mongoUrl)
+    .then(() => console.log("Successfully connected to DB"))
+    .catch((error) => {
+      console.log("Connection error:", error);
+      setTimeout(connectWithRetry, 5000);
+    });
+};
+
+connectWithRetry();
 
 app.get("/", (req, res) => {
   res.status(200).send({
