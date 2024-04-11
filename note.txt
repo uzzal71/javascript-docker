@@ -35,7 +35,7 @@ docker ps -a
 docker logs node-app
 
 Delete local node_modules file:
-docker run -v $(pwd):/app -v /app/node_modules -p 3000:3000 -d --name node-app node-app-image
+docker run -v $(pwd):/app -v /app/node_modules -p 3000:3000 -d --name node-app-dev node-app-image
 
 **** Nodemon installation----
 
